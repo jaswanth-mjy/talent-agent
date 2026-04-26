@@ -51,18 +51,54 @@ def _apply_styles() -> None:
             --radius-lg:  16px;
             --shadow:     0 1px 3px rgba(27,43,75,0.07), 0 4px 12px rgba(27,43,75,0.05);
             --shadow-sm:  0 1px 2px rgba(27,43,75,0.06);
+
+            --bg-page:    var(--stone);
+            --bg-surface: var(--white);
+            --bg-soft:    var(--mist);
+            --text-main:  var(--navy);
+            --text-sub:   var(--slate);
+            --text-muted: var(--muted);
+            --sidebar-bg: var(--navy);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --line:       #334155;
+                --stone:      #0F172A;
+                --mist:       #1E293B;
+                --white:      #111827;
+                --navy:       #E5E7EB;
+                --slate:      #CBD5E1;
+                --muted:      #94A3B8;
+                --shadow:     0 1px 2px rgba(0,0,0,0.35), 0 8px 20px rgba(0,0,0,0.22);
+                --shadow-sm:  0 1px 2px rgba(0,0,0,0.3);
+
+                --bg-page:    #0F172A;
+                --bg-surface: #111827;
+                --bg-soft:    #1E293B;
+                --text-main:  #E5E7EB;
+                --text-sub:   #CBD5E1;
+                --text-muted: #94A3B8;
+                --sidebar-bg: #0B1220;
+            }
         }
 
         html, body, [class*="css"] {
             font-family: 'DM Sans', sans-serif;
-            background-color: var(--stone);
-            color: var(--navy);
+            background-color: var(--bg-page);
+            color: var(--text-main);
         }
-        .stApp { background-color: var(--stone); }
+        .stApp { background-color: var(--bg-page); }
         .block-container { padding-top: 1.6rem; padding-bottom: 3rem; max-width: 1400px; }
 
+        [data-testid="stMarkdownContainer"],
+        [data-testid="stText"],
+        [data-testid="stCaptionContainer"] {
+            color: var(--text-sub);
+        }
+
         section[data-testid="stSidebar"] {
-            background-color: var(--navy);
+            background-color: var(--sidebar-bg);
             border-right: none;
         }
         section[data-testid="stSidebar"] * { color: #C8D3EC !important; }
@@ -77,7 +113,7 @@ def _apply_styles() -> None:
         }
         section[data-testid="stSidebar"] hr { border-color: rgba(255,255,255,0.1) !important; }
 
-        h1, h2, h3 { font-family: 'Lora', Georgia, serif; letter-spacing: -0.02em; color: var(--navy); }
+        h1, h2, h3 { font-family: 'Lora', Georgia, serif; letter-spacing: -0.02em; color: var(--text-main); }
 
         .topbar {
             display: flex;
@@ -122,13 +158,13 @@ def _apply_styles() -> None:
         }
 
         .card {
-            background: var(--white); border: 1px solid var(--line);
+            background: var(--bg-surface); border: 1px solid var(--line);
             border-radius: var(--radius-lg); padding: 1.2rem 1.3rem;
             box-shadow: var(--shadow);
         }
 
         .cand {
-            background: var(--white); border: 1px solid var(--line);
+            background: var(--bg-surface); border: 1px solid var(--line);
             border-left: 4px solid var(--navy);
             border-radius: var(--radius-lg);
             padding: 1.1rem 1.2rem 0.95rem;
@@ -136,17 +172,17 @@ def _apply_styles() -> None:
             transition: box-shadow 0.12s;
         }
         .cand:hover { box-shadow: var(--shadow); }
-        .cand-rank { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
-        .cand-name { font-family: 'Lora', Georgia, serif; font-size: 0.95rem; font-weight: 700; color: var(--navy); }
-        .cand-meta { font-size: 0.82rem; color: var(--slate); margin-top: 0.18rem; }
+        .cand-rank { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); }
+        .cand-name { font-family: 'Lora', Georgia, serif; font-size: 0.95rem; font-weight: 700; color: var(--text-main); }
+        .cand-meta { font-size: 0.82rem; color: var(--text-sub); margin-top: 0.18rem; }
 
         .mini {
-            background: var(--mist); border: 1px solid var(--line);
+            background: var(--bg-soft); border: 1px solid var(--line);
             border-radius: var(--radius); padding: 0.6rem 0.75rem; text-align: center;
         }
-        .mini-label { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; color: var(--muted); margin-bottom: 0.2rem; }
-        .mini-val   { font-family: 'Lora', Georgia, serif; font-size: 1.35rem; font-weight: 700; color: var(--navy); }
-        .mini-sub   { font-size: 0.72rem; color: var(--muted); margin-top: 0.08rem; }
+        .mini-label { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; color: var(--text-muted); margin-bottom: 0.2rem; }
+        .mini-val   { font-family: 'Lora', Georgia, serif; font-size: 1.35rem; font-weight: 700; color: var(--text-main); }
+        .mini-sub   { font-size: 0.72rem; color: var(--text-muted); margin-top: 0.08rem; }
 
         .badge {
             display: inline-flex; align-items: center; gap: 0.25rem;
@@ -160,15 +196,15 @@ def _apply_styles() -> None:
 
         .chip {
             display: inline-flex; padding: 0.25rem 0.55rem; border-radius: 6px;
-            background: var(--mist); border: 1px solid var(--line);
-            color: var(--slate); font-size: 0.76rem; font-weight: 500;
+            background: var(--bg-soft); border: 1px solid var(--line);
+            color: var(--text-sub); font-size: 0.76rem; font-weight: 500;
             margin: 0 0.25rem 0.25rem 0;
         }
 
         .pipe-row {
             display: flex; flex-wrap: wrap; gap: 0.4rem;
             padding: 0.75rem 1rem;
-            background: var(--white); border: 1px solid var(--line); border-radius: var(--radius);
+            background: var(--bg-surface); border: 1px solid var(--line); border-radius: var(--radius);
         }
         .stage {
             display: inline-flex; align-items: center; gap: 0.3rem;
@@ -189,27 +225,27 @@ def _apply_styles() -> None:
         .stButton > button:hover { opacity: 0.92 !important; }
 
         .stDownloadButton > button {
-            background: var(--white) !important; color: var(--navy) !important;
-            border: 1.5px solid var(--navy) !important;
+            background: var(--bg-surface) !important; color: var(--text-main) !important;
+            border: 1.5px solid var(--line) !important;
             border-radius: var(--radius) !important; font-weight: 600 !important;
         }
 
         [data-testid="stMetric"] {
-            background: var(--white); border: 1px solid var(--line);
+            background: var(--bg-surface); border: 1px solid var(--line);
             border-radius: var(--radius); padding: 0.9rem 1rem; box-shadow: var(--shadow-sm);
         }
-        [data-testid="stMetricLabel"] { color: var(--muted) !important; font-size: 0.8rem !important; }
-        [data-testid="stMetricValue"] { color: var(--navy) !important; font-weight: 700 !important; }
+        [data-testid="stMetricLabel"] { color: var(--text-muted) !important; font-size: 0.8rem !important; }
+        [data-testid="stMetricValue"] { color: var(--text-main) !important; font-weight: 700 !important; }
 
         .stProgress > div > div { border-radius: 99px; }
         div[data-testid="stExpander"] {
             border-radius: var(--radius) !important;
             border: 1px solid var(--line) !important;
-            background: var(--mist) !important;
+            background: var(--bg-soft) !important;
         }
 
         .info-wrap {
-            background: var(--white); border: 1px solid var(--line);
+            background: var(--bg-surface); border: 1px solid var(--line);
             border-radius: var(--radius-lg); padding: 1.6rem 1.8rem; box-shadow: var(--shadow-sm);
         }
         .info-step { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.2rem; }
@@ -220,8 +256,8 @@ def _apply_styles() -> None:
             font-size: 0.8rem; font-weight: 700;
             display: flex; align-items: center; justify-content: center; margin-top: 0.05rem;
         }
-        .info-title { font-weight: 600; color: var(--navy); font-size: 0.92rem; }
-        .info-body  { font-size: 0.83rem; color: var(--slate); margin-top: 0.12rem; line-height: 1.55; }
+        .info-title { font-weight: 600; color: var(--text-main); font-size: 0.92rem; }
+        .info-body  { font-size: 0.83rem; color: var(--text-sub); margin-top: 0.12rem; line-height: 1.55; }
         </style>
         """,
         unsafe_allow_html=True,
@@ -353,8 +389,8 @@ if run_clicked:
             st.session_state["stage_messages"].append((stage, message))
             stage_ph.markdown(_stage_bar(sm), unsafe_allow_html=True)
             html = "".join(
-                f"<div style='font-size:0.82rem;color:#6B7A99;margin-top:0.3rem;'>"
-                f"<strong style='color:#4A5568'>{s}:</strong> {m}</div>"
+                f"<div style='font-size:0.82rem;color:var(--text-muted);margin-top:0.3rem;'>"
+                f"<strong style='color:var(--text-sub)'>{s}:</strong> {m}</div>"
                 for s, m in st.session_state["stage_messages"][-6:]
             )
             message_ph.markdown(html, unsafe_allow_html=True)
@@ -397,9 +433,9 @@ if result:
         st.markdown('<div class="sec-head">Role Details</div>', unsafe_allow_html=True)
         st.markdown(
             f"""<div class="card">
-                    <div style="font-weight:600;color:#1B2B4B;font-size:0.84rem;margin-bottom:0.45rem;">
+                    <div style="font-weight:600;color:var(--text-main);font-size:0.84rem;margin-bottom:0.45rem;">
                     {parsed_jd.get('role','Unknown')}
-                    <span style="font-weight:400;color:#6B7A99;font-size:0.84rem;">
+                    <span style="font-weight:400;color:var(--text-muted);font-size:0.84rem;">
                     &nbsp;·&nbsp;{parsed_jd.get('experience_years', 0)} yrs exp
                     </span>
                 </div>
@@ -421,20 +457,20 @@ if result:
         if best:
             bcss, bic = _badge(best.get("recommendation", ""))
             st.markdown(
-                f"""<div class="card" style="margin-top:0.85rem;border-left:4px solid #1B2B4B;">
+                f"""<div class="card" style="margin-top:0.85rem;border-left:4px solid var(--text-main);">
                     <div style="font-size:0.68rem;font-weight:700;text-transform:uppercase;
-                                letter-spacing:0.09em;color:#6B7A99;margin-bottom:0.35rem;">
+                                letter-spacing:0.09em;color:var(--text-muted);margin-bottom:0.35rem;">
                         Top Candidate
                     </div>
                     <div style="font-family:'Lora',Georgia,serif;font-size:0.92rem;
-                                font-weight:700;color:#1B2B4B;">
+                                font-weight:700;color:var(--text-main);">
                         {best.get('name','—')}
                     </div>
                     <div style="margin-top:0.4rem;">
                         <span class="badge {bcss}">{bic} {best.get('recommendation','—')}</span>
                     </div>
-                    <div style="font-size:0.8rem;color:#6B7A99;margin-top:0.35rem;">
-                        Final score: <strong style="color:#1B2B4B">{best.get('final_score',0)}</strong>
+                    <div style="font-size:0.8rem;color:var(--text-muted);margin-top:0.35rem;">
+                        Final score: <strong style="color:var(--text-main)">{best.get('final_score',0)}</strong>
                     </div>
                 </div>""",
                 unsafe_allow_html=True,
@@ -472,7 +508,7 @@ if result:
                     dot = (
                         '<div style="color:#0E7C6B;font-size:0.8rem;font-weight:600;">● Contacted</div>'
                         if contacted else
-                        '<div style="color:#6B7A99;font-size:0.8rem;">○ Not contacted</div>'
+                        '<div style="color:var(--text-muted);font-size:0.8rem;">○ Not contacted</div>'
                     )
                     st.markdown(
                         f"""<div style="text-align:right;padding-top:0.15rem;">
