@@ -2,6 +2,8 @@
 
 Local AI hiring assistant that turns a job description into a ranked shortlist of candidates, with explainable scoring and simulated outreach.
 
+Repository: https://github.com/jaswanth-mjy/talent-agent
+
 ## 1-Minute Judge Quick Start
 
 Use these exact commands in two terminals.
@@ -57,177 +59,29 @@ This project is built for the Catalyst problem statement:
 | --- | --- |
 | Working prototype | Yes, runs locally with Streamlit |
 | Deployed URL or local setup instructions | Local setup instructions included below |
-| Source code in a public repo with README | This repository can be published as-is |
+| Source code in a public repo with README | https://github.com/jaswanth-mjy/talent-agent |
 | 3–5 minute demo video | Add your final demo link in the placeholder below |
 | Architecture diagram and scoring logic | Included below |
 | Sample inputs and outputs | Included below |
 
-## Download Source Code
+## Prerequisites
 
-Choose one of the two options below.
-
-### Option A: Clone with Git (recommended)
-
-```bash
-git clone <YOUR_PUBLIC_REPO_URL>
-cd talent-agent
-```
-
-### Option B: Download ZIP from GitHub
-
-1. Open your repository page on GitHub.
-2. Click `Code` -> `Download ZIP`.
-3. Extract the ZIP.
-4. Open terminal inside the extracted `talent-agent` folder.
-
-## System Requirements
-
-- macOS, Linux, or Windows
 - Python 3.10+
-- `pip` (Python package installer)
-- Ollama
+- Ollama installed: https://ollama.com/download
+- Git
 
-## Install Ollama (Required)
-
-Use one of these methods based on your OS.
-
-### macOS
-
-1. Install from official website: https://ollama.com/download
-2. Or via Homebrew:
+Clone and enter project:
 
 ```bash
-brew install ollama
-```
-
-### Linux
-
-```bash
-curl -fsSL https://ollama.com/install.sh | sh
-```
-
-### Windows
-
-1. Install from official website: https://ollama.com/download
-2. Run the installer and restart terminal.
-
-Verify installation:
-
-```bash
-ollama --version
-```
-
-Start Ollama server:
-
-```bash
-ollama serve
-```
-
-Pull required models (first-time setup):
-
-```bash
-ollama pull llama3
-ollama pull nomic-embed-text
-```
-
-Verify Ollama is healthy:
-
-```bash
-curl -s http://127.0.0.1:11434/api/tags | head
-```
-
-## Run Everything (From Scratch)
-
-After downloading/cloning, run these steps in order.
-
-### Step 1: Create environment and install dependencies
-
-```bash
+git clone https://github.com/jaswanth-mjy/talent-agent.git
 cd talent-agent
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-```
-
-This command installs all Python requirements defined in `requirements.txt` (for example: `streamlit`, `requests`, `numpy`, `faiss-cpu`).
-
-### Step 2: Start Ollama and pull models
-
-```bash
-ollama serve
-```
-
-In another terminal:
-
-```bash
-ollama pull llama3
-ollama pull nomic-embed-text
-```
-
-### Step 3: Start the Streamlit app
-
-```bash
-cd talent-agent
-source .venv/bin/activate
-export PYTHONPATH=$PYTHONPATH:$(pwd)
-streamlit run app.py --server.port 8501
-```
-
-Open:
-
-- http://localhost:8501
-
-## Quickstart (Copy-Paste)
-
-Use this exact sequence for a reliable local run.
-
-### Terminal 1: start Ollama
-
-```bash
-ollama serve
-```
-
-If first run, pull models once:
-
-```bash
-ollama pull llama3
-ollama pull nomic-embed-text
-```
-
-### Terminal 2: start the app
-
-```bash
-cd /path/to/your/workspace/talent-agent
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-export PYTHONPATH=$PYTHONPATH:$(pwd)
-streamlit run app.py --server.port 8501
-```
-
-Open:
-
-- http://localhost:8501
-
-Expected success:
-
-- Streamlit shows the dashboard
-- Pipeline stages appear live: JD Parsing -> Discovery -> Matching -> Outreach -> Scoring -> Ranking -> Complete
-
-### Optional one-line smoke test (without UI)
-
-```bash
-cd /path/to/your/workspace/talent-agent
-source .venv/bin/activate
-export PYTHONPATH=$PYTHONPATH:$(pwd)
-python3 -c "from core.agent import TalentAgent; out=TalentAgent().run('Need backend engineer with Python Django SQL, 3 years', top_k=3); print(len(out['results']))"
 ```
 
 ## Demo Video
 
 Add your walkthrough video link here before submission:
 
-- Demo video URL: `PASTE_YOUR_DEMO_VIDEO_LINK_HERE`
+- Demo video URL: `TO_BE_ADDED`
 
 Recommended demo flow:
 
@@ -321,59 +175,6 @@ The UI shows the pipeline as it runs so the recruiter can see exactly what is be
 6. Ranking
 7. Complete
 
-## Local Setup
-
-### Prerequisites
-
-- Python 3.10+
-- Ollama installed locally (see **Install Ollama (Required)** above)
-- A terminal and browser
-
-### 1) Install dependencies
-
-```bash
-cd talent-agent
-pip install -r requirements.txt
-```
-
-### 2) Start Ollama
-
-Open a second terminal and run:
-
-```bash
-ollama serve
-```
-
-Pull the required models if they are not already available:
-
-```bash
-ollama pull llama3
-ollama pull nomic-embed-text
-```
-
-### 3) Run the Streamlit app
-
-```bash
-cd talent-agent
-streamlit run app.py
-```
-
-Open the app in your browser:
-
-- http://localhost:8501
-
-### 4) Optional CLI run
-
-```bash
-python main.py
-```
-
-Or pass a JD directly:
-
-```bash
-python main.py "Looking for Python backend developer with Django and SQL, 2 years experience"
-```
-
 ## Troubleshooting
 
 ### `Port 8501 is already in use`
@@ -395,7 +196,7 @@ streamlit run app.py --server.port 8502
 You are not in the project directory. Run:
 
 ```bash
-cd /path/to/your/workspace/talent-agent
+cd talent-agent
 streamlit run app.py --server.port 8501
 ```
 
@@ -413,33 +214,10 @@ curl -s http://127.0.0.1:11434/api/tags | head
 ### Dependency or import issues
 
 ```bash
-cd /path/to/your/workspace/talent-agent
+cd talent-agent
 source .venv/bin/activate
 pip install -r requirements.txt
 export PYTHONPATH=$PYTHONPATH:$(pwd)
-```
-
-## Configuration
-
-Useful environment variables:
-
-- `STRICT_OLLAMA=1` to fail fast if Ollama embeddings are unavailable.
-- `USE_LLM_CONVERSATION=1` to enable LLM-based simulated outreach.
-- `OLLAMA_TIMEOUT_SECONDS=20` to reduce or increase Ollama request timeout.
-
-Examples:
-
-```bash
-STRICT_OLLAMA=1 python main.py
-USE_LLM_CONVERSATION=1 streamlit run app.py
-```
-
-## Testing
-
-Run the unit tests:
-
-```bash
-python -m unittest discover -s tests
 ```
 
 ## Sample Input
@@ -505,7 +283,7 @@ Need 5 data engineer profiles with 4+ years of experience in SQL, Django, Python
 ## Notes for Submission
 
 - If you have a deployed version, replace the local URL section with the hosted link.
-- Replace the demo video placeholder before submitting.
+- Replace `TO_BE_ADDED` with the final demo video link before submitting.
 - If you want a one-line summary for the demo slide, use:
 
 > AI agent that parses a JD, discovers and ranks candidates, simulates outreach, and returns a recruiter-ready shortlist with explainable scoring.
