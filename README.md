@@ -60,7 +60,6 @@ This project is built for the Catalyst problem statement:
 | Working prototype | Yes, runs locally with Streamlit |
 | Deployed URL or local setup instructions | Local setup instructions included below |
 | Source code in a public repo with README | https://github.com/jaswanth-mjy/talent-agent |
-| 3–5 minute demo video | Add your final demo link in the placeholder below |
 | Architecture diagram and scoring logic | Included below |
 | Sample inputs and outputs | Included below |
 
@@ -76,19 +75,6 @@ Clone and enter project:
 git clone https://github.com/jaswanth-mjy/talent-agent.git
 cd talent-agent
 ```
-
-## Demo Video
-
-Add your walkthrough video link here before submission:
-
-- Demo video URL: `TO_BE_ADDED`
-
-Recommended demo flow:
-
-1. Enter a sample JD.
-2. Show live stage updates: JD Parsing -> Discovery -> Matching -> Outreach -> Ranking.
-3. Open one or two candidate cards and explain the scoring.
-4. Show the CSV export and contact tracking actions.
 
 ## Architecture Overview
 
@@ -283,7 +269,6 @@ Need 5 data engineer profiles with 4+ years of experience in SQL, Django, Python
 ## Notes for Submission
 
 - If you have a deployed version, replace the local URL section with the hosted link.
-- Replace `TO_BE_ADDED` with the final demo video link before submitting.
 - If you want a one-line summary for the demo slide, use:
 
 > AI agent that parses a JD, discovers and ranks candidates, simulates outreach, and returns a recruiter-ready shortlist with explainable scoring.
