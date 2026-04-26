@@ -1,0 +1,44 @@
+[
+	{
+		"name": "Ravi Kumar",
+		"role": "Backend Developer",
+		"skills": ["Python", "Django", "SQL", "REST API", "Docker"],
+		"experience": 3,
+		"profile": "Backend engineer focused on Django services and relational databases."
+	},
+	{
+		"name": "Ananya Singh",
+		"role": "Full Stack Developer",
+		"skills": ["Python", "FastAPI", "PostgreSQL", "React", "AWS"],
+		"experience": 4,
+		"profile": "Builds scalable APIs and cloud deployments with strong ownership."
+	},
+	{
+		"name": "Vikram Das",
+		"role": "Software Engineer",
+		"skills": ["Java", "Spring", "MySQL", "Redis", "Kubernetes"],
+		"experience": 5,
+		"profile": "Experienced in enterprise backend systems and distributed services."
+	},
+	{
+		"name": "Neha Iyer",
+		"role": "Backend Developer",
+		"skills": ["Python", "Flask", "SQL", "Celery", "RabbitMQ"],
+		"experience": 2,
+		"profile": "Backend developer with API-first mindset and clean coding practices."
+	},
+	{
+		"name": "Arjun Mehta",
+		"role": "Platform Engineer",
+		"skills": ["Go", "Docker", "Kubernetes", "Terraform", "AWS"],
+		"experience": 6,
+		"profile": "Platform engineer building CI/CD and infrastructure automation."
+	},
+	{
+		"name": "Priya Nair",
+		"role": "Data Engineer",
+		"skills": ["Python", "SQL", "Airflow", "Spark", "AWS"],
+		"experience": 3,
+		"profile": "Data engineer with strong ETL and workflow orchestration skills."
+	}
+]
