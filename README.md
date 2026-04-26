@@ -14,6 +14,8 @@ Use these exact commands in two terminals.
 ollama serve
 ```
 
+If you see `address already in use` for port `11434`, Ollama is already running. Do not restart it. Continue with Terminal 2.
+
 ### Terminal 2
 
 ```bash
@@ -34,6 +36,47 @@ You should see:
 - dashboard loads successfully
 - pipeline stages run live
 - ranked shortlist appears with explanation
+
+## Runtime Checklist (Is It Running?)
+
+Use this quick checklist before presenting.
+
+1. Check Ollama process on port 11434:
+
+```bash
+lsof -i :11434
+```
+
+2. Check Ollama API is responding:
+
+```bash
+curl -s http://127.0.0.1:11434/api/tags | head
+```
+
+3. Check Streamlit process on port 8501:
+
+```bash
+lsof -i :8501
+```
+
+4. Check app is reachable:
+
+```bash
+curl -I -s http://127.0.0.1:8501 | head -n 1
+```
+
+Expected:
+
+- Ollama command returns model/tag JSON
+- Streamlit URL returns `HTTP/1.1 200 OK`
+- Dashboard opens on `http://localhost:8501`
+
+If you want a clean restart:
+
+```bash
+pkill -f "streamlit run .*talent-agent/app.py" || true
+pkill -f "ollama serve" || true
+```
 
 This project is built for the Catalyst problem statement:
 
