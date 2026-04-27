@@ -4,6 +4,10 @@ Local AI hiring assistant that turns a job description into a ranked shortlist o
 
 Repository: https://github.com/jaswanth-mjy/talent-agent
 
+DEMO video link:
+https://drive.google.com/file/d/1nE7EFkcC2X0xQcIpkmWmbpHqVnima6aw/view?usp=sharing
+
+
 ## 1-Minute Judge Quick Start
 
 Use these exact commands in two terminals.
